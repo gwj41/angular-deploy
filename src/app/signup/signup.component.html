@@ -1,0 +1,34 @@
+<div class="container">
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label for="username">User Name</label>
+      <input type="text" id="username" class="form-control" formControlName="username" (keydown)="log(username)">
+      <div *ngIf="(username.dirty || username.touched) && username.invalid" class="alert alert-danger">
+        <div *ngIf="username.errors?.required">Username is requird</div>
+        <div *ngIf="username.errors?.minlength">Username's minlenth is {{ username.errors?.minlength.requiredLength }} and actual length is {{ username.errors?.minlength.actualLength }}</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="text" id="password" class="form-control" formControlName="password">
+    </div>
+  </form>
+  {{form.value | json}}
+</div>
+<div class="container">
+  <form [formGroup]="form2">
+    <div class="form-group">
+      <label for="phone">Cellphone</label>
+      <input type="text" id="phone" class="form-control" formControlName="phone" (keydown)="log(phone)">
+      <div *ngIf="(phone.dirty || phone.touched) && phone.invalid" class="alert alert-danger">
+        <div *ngIf="phone.errors?.required">Cellphone is requird</div>
+        <div *ngIf="phone.errors?.maxlength">Cellphone's maxlenth is {{ phone.errors?.maxlength.requiredLength }} and actual length is {{ phone.errors?.maxlength.actualLength }}</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="address">address</label>
+      <input type="text" id="address" class="form-control" formControlName="address">
+    </div>
+  </form>
+  {{form2.value | json}}
+</div>

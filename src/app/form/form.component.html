@@ -1,0 +1,32 @@
+<div class="container">
+  <form #formRef="ngForm" (ngSubmit)="submitForm(formRef)">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" required name="firstName" id="firstName" class="form-control" ngModel="robbie gu" #firstNameRef="ngModel" (change)="log(firstNameRef)">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input #email="ngModel" type="text" id="email" name="email" class="form-control" ngModel (keyup.enter)="onKeyup(email.value)" />
+    </div>
+
+    <div class="form-group">
+      <label for="book">Book</label>
+      <select multiple #book name="book" ngModel id="book" class="form-control">
+        <option value=""></option>
+        <option *ngFor="let book of books" [ngValue]="book">{{book.name}}</option>
+      </select>
+    </div>
+    {{formRef.value | json}}
+    <div class="form-group">
+      <label for="comments">Comments</label>
+      <input type="textarea" name="comments" id="comments" class="form-control" ngModel #comments="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="isSubscrib">Subscrib</label>
+      <input type="checkbox" name="isSubscrib" id="isSubscrib" class="form-control" ngModel #isSubscrib="ngModel" value="Subscrib" />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="!formRef.valid">Submit form</button>
+    </div>
+  </form>
+</div>
